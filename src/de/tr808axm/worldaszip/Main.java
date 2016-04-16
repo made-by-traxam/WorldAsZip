@@ -26,6 +26,7 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         super.onEnable();
         registerCommands();
+        if(!getDataFolder().exists()) getDataFolder().mkdirs();
         getLogger().info("Enabled!");
     }
 
@@ -57,6 +58,7 @@ public class Main extends JavaPlugin {
             }
             zos.close();
             fos.close();
+            getLogger().info("Successfully built zip!");
             return true;
         } catch (IOException e) {
             getLogger().severe("Could not zip world: " + e.getClass().getSimpleName());
